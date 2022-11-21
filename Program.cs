@@ -7,10 +7,13 @@ namespace RandomNumbers
     {
         static void Main(string[] args)
         {
+            int amount = Convert.ToInt32(Console.ReadLine());
+            int min = Convert.ToInt32(Console.ReadLine());
+            int max = Convert.ToInt32(Console.ReadLine());
             
             var generator = new RandomGenerator();
-            var nums = generator.RandomNumbers(5, 2, 55);
-            Console.Write($"Random numbers between 2 and 5: {string.Join(" ", nums)}");
+            var nums = generator.RandomNumbers(amount, min, max);
+            Console.Write($"Here is {amount.ToString()} random numbers between {min.ToString()} and {max.ToString()}: {string.Join(" ", nums)}");
         }
     }
 
