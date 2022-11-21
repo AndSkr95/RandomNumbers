@@ -7,16 +7,39 @@ namespace RandomNumbers
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter amount of random numbers: ");
-            int amount = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter minimum random number value: ");
-            int min = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter maximum random number value: ");
-            int max = Convert.ToInt32(Console.ReadLine());
-            
-            var generator = new RandomGenerator();
-            var nums = generator.RandomNumbers(amount, min, max);
-            Console.Write($"Here is {amount.ToString()} random numbers between {min.ToString()} and {max.ToString()}: {string.Join(" ", nums)}");
+            try
+            {
+                int amount;
+                int min;
+                int max;
+                while (true)
+                {
+                    Console.WriteLine("Enter amount of random numbers: ");
+                    bool amountSuccess = int.TryParse(Console.ReadLine(), out amount);
+                    Console.WriteLine("Enter minimum random number value: ");
+                    bool minSuccess = int.TryParse(Console.ReadLine(), out min);
+                    Console.WriteLine("Enter maximum random number value: ");
+                    bool maxSuccess = int.TryParse(Console.ReadLine(), out max);
+                
+                    if (amountSuccess && minSuccess && maxSuccess)
+                    {
+                        var generator = new RandomGenerator();
+                        var nums = generator.RandomNumbers(amount, min, max);
+                        Console.Write($"Here is {amount.ToString()} random numbers between {min.ToString()} and {max.ToString()}: {string.Join(" ", nums)}");
+                        break;
+                    }
+
+                    Console.WriteLine("One of your inputs were invalid, please try again.");
+
+                }
+                
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
         }
     }
 
