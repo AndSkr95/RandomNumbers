@@ -7,8 +7,11 @@ namespace RandomNumbers
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Enter amount of random numbers: ");
             int amount = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter minimum random number value: ");
             int min = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter maximum random number value: ");
             int max = Convert.ToInt32(Console.ReadLine());
             
             var generator = new RandomGenerator();
